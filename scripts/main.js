@@ -1,32 +1,64 @@
+//table PAGE
 
 // Create a table with information
 
 let members = data.results[0].members;
 
-let senate_body = document.getElementById("senate-body");
+let table_body = document.getElementById("table-body");
 
-function tablesenate(lista) {
+function tabletable(lista) {
 
   for (i = 0; i < lista.length; i++) {
 
-    let senate_row = document.createElement("tr");
+    let table_row = document.createElement("tr");
 
+    //name
 
+    let table_name = document.createElement("td");
 
+    table_firstname = lista[i].first_name;
 
-    let senate_data = document.createElement("td"); // crear uno para cada
+    if (lista[i].middle_name != null) {
+      table_middlename = lista[i].middle_name;
+    }
+    else {
+      table_middlename = "";
+    }
 
-    // senate_data.textContent = lista[i].first_name;
+    table_lastname = lista[i].last_name;
 
-    senate_data.textContent = lista[i].middle_name;
+    table_name.textContent = table_firstname + " " + table_middlename + " " + table_lastname;
 
-    senate_row.append(senate_data);
+    table_row.append(table_name);
 
+    //party
 
-    senate_body.append(senate_row);
+    let table_party = document.createElement("td");
+    table_party.textContent = lista[i].party;
+    table_row.append(table_party);
+
+    //state
+
+    let table_state = document.createElement("td");
+    table_state.textContent = lista[i].state;
+    table_row.append(table_state);
+
+    //years in office
+
+    let table_senority = document.createElement("td");
+    table_senority.textContent = lista[i].seniority;
+    table_row.append(table_senority);
+
+    //%Votes
+
+    let table_total_votes = document.createElement("td");
+    table_total_votes.textContent = lista[i].votes_with_party_pct;
+    table_row.append(table_total_votes);
+
+    table_body.append(table_row);
 
   }
 }
-tablesenate(members);
+tabletable(members);
 
 
