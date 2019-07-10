@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="styles/nysl_4.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
   <title>Home</title>
+  <style>
+      *{
+          font-family:'Courier New', Courier, monospace;
+          padding: 10px;
+
+      }
+      .jumbotron {
+          background-color:  #ddd;
+          color: white;
+      }
+
+      /* Adds borders for tabs */
+      .tab-content {
+          border-left: 1px solid #ddd;
+          border-right: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          padding: 10px;
+      }
+
+      .nav-tabs {
+          margin-bottom: 0;
+      }
+  </style>
 </head>
 
 <body>
+   
   <nav>
     <div>
       <div>
@@ -18,8 +43,8 @@
         <li>
           <a href="#">Congress 113</a>
           <ul>
-            <li><a href="#">Senate</a></li>
-            <li><a href="#">House</a></li>
+            <li><a href="senate-starter-page.html">Senate</a></li>
+            <li><a href="house-starter-page.html">House</a></li>
           </ul>
         </li>
       </ul>
@@ -34,8 +59,9 @@
   </header>
 
   <!--Table container-->
-  
-  <div>
+
+  <div class="container">
+    
     <h2>About Us</h2>
     <p>Openness, accountability, and honesty define government transparency. In a free society, transparency is
       government's obligation to share information with citizens. It is at the heart of how citizens hold their public
@@ -78,8 +104,8 @@
 
   </div>
 
-  <script src="pro-congress-113-senate.js"></script>
-  <script src="pro-congress-113-house.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </body>
 
