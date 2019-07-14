@@ -15,10 +15,12 @@
   color: grey;
   padding: 10px;
 }
+
 .mylink a {
   color: black;
   text-decoration: none;
 }
+
 .jumbotron {
   margin-top: 20px;
   color: black;
@@ -33,10 +35,6 @@
   padding: 10px 10px 0px 10px;
 }
 
-/* .nav-tabs {
-  margin: 0px 20px 30px 40px;
-} */
-
 .foot {
   display: flex;
   justify-content: center;
@@ -45,10 +43,11 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  /* background-color: #a29fa2; */
-  background-image: url(../images/EEUU.jpg);
-  background-size: cover;
+  background-color: #a29fa2;
+  /* background-image: url(../images/SENATE.jpg); */
+  /* background-size: cover; */
 }
+
 .foot p {
   background-color: aliceblue;
   border-radius: 10px;
@@ -63,10 +62,16 @@
   background-color: white;
 }
 
+/* HOME */
+
 .desplegable {
   margin-top: 20px;
 }
 
 #more {
   display: none;
+}
+
+.myitems {
+  padding: 50px;
 }
