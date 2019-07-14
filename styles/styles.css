@@ -1,70 +1,72 @@
+/* GENERAL */
+
 * {
-    margin: 0px;
-    padding: 0px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#more {
-    display: none;
+.mylink {
+  margin-left: 20px;
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  text-decoration: none;
+  color: grey;
+  padding: 10px;
 }
-
+.mylink a {
+  color: black;
+  text-decoration: none;
+}
 .jumbotron {
-    margin-top: 20px;
-    color: black;
+  margin-top: 20px;
+  color: black;
 }
 
 /* Adds borders for tabs */
 
 .tab-content {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 10px 0px 10px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 10px 0px 10px;
 }
 
-.nav-tabs {
-    margin-bottom: 0;
-}
+/* .nav-tabs {
+  margin: 0px 20px 30px 40px;
+} */
 
 .foot {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #A29FA2;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* background-color: #a29fa2; */
+  background-image: url(../images/EEUU.jpg);
+  background-size: cover;
+}
+.foot p {
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
 }
 
 .mytop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    background-color: white;
-}
-
-.myitems {
-    margin-top: 270px;
-    position: relative;
-}
-
-.mynav {
-    margin-left: 20px;
-    margin-right: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: white;
 }
 
 .desplegable {
+  margin-top: 20px;
+}
 
-    margin-top: 20px;
-}
-.mylink {
-    margin-left: 20px;
-    position: relative;
-    right: 20px;
-    text-decoration: none;
-    color: grey;
-    text-decoration: none;
-    padding: 10px;
-}
-.mycontainer {
-    padding: 50px;
+#more {
+  display: none;
 }
