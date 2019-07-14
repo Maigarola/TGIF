@@ -1,0 +1,70 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#more {
+    display: none;
+}
+
+.jumbotron {
+    margin-top: 20px;
+    color: black;
+}
+
+/* Adds borders for tabs */
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 10px 0px 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+.foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #A29FA2;
+}
+
+.mytop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+}
+
+.myitems {
+    margin-top: 270px;
+    position: relative;
+}
+
+.mynav {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.desplegable {
+
+    margin-top: 20px;
+}
+.mylink {
+    margin-left: 20px;
+    position: relative;
+    right: 20px;
+    text-decoration: none;
+    color: grey;
+    text-decoration: none;
+    padding: 10px;
+}
+.mycontainer {
+    padding: 50px;
+}

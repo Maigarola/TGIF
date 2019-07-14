@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,17 +32,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li>
-          <a class="nav-link" href="home-starter-page.html">Home</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="home-starter-page.html">Home <span class="sr-only"></a>
         </li>
         <li class="nav-item">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Congress 113</span>
+            Congress 113
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">House </a>
+            <a class="nav-link" href="#">House <span class="sr-only"></a>
             <a class="dropdown-item" href="senate-starter-page.html">Senate</a>
           </div>
         </li>
@@ -70,36 +69,148 @@
       </ul>
     </div>
   </nav>
-  <div class="myitem container col-11">
-    <h2>Congressmen</h2>
 
+  <div class="container">
+    <h2>Attendance</h2>
     <p>
-      The major power of the House is to pass federal legislation that affects
-      the entire country, although its bills must also be passed by the Senate
-      and further agreed to by the U.S. President before becoming law (unless
-      both the House and Senate re-pass the legislation with a two-thirds
-      majority in each chamber). The House has some exclusive powers: the
-      power to initiate revenue bills, to impeach officials (impeached
-      officials are subsequently tried in the Senate), and to elect the U.S.
-      President in case there is no majority in the Electoral College.
-    </p>
-    <p>
-      Each U.S. state is represented in the House in proportion to its
-      population as measured in the census, but every state is entitled to at
-      least one representative.
+      The Constitution specifies that a majority of members constitutes a
+      quorum to do business in each house. Representatives and senators rarely
+      force the presence of a quorum by demanding quorum calls; thus, in most
+      cases, debates continue even if a majority is not present.
     </p>
 
+    <p>
+      The Senate uses roll-call votes; a clerk calls out the names of all the
+      senators, each senator stating "aye" or "no" when his or her name is
+      announced. The House reserves roll-call votes for the most formal
+      matters, as a roll-call of all 435 representatives takes quite some
+      time; normally, members vote by electronic device. In the case of a tie,
+      the motion in question fails. In the Senate, the Vice President may (if
+      present) cast the tiebreaking vote.
+    </p>
+
+    <h2>Senate at a glance</h2>
     <table class="table">
       <thead>
         <tr>
-          <th>Name</th>
           <th>Party</th>
-          <th>State</th>
-          <th>Years in Office</th>
-          <th>% Votes w/ Party</th>
+          <th>Number of Reps</th>
+          <th>% Voted with Prty</th>
         </tr>
       </thead>
-      <tbody id="table-body"></tbody>
+      <tbody>
+        <tr>
+          <td>Republican</td>
+          <td id="reptot"></td>
+          <td id="repvotes"></td>
+        </tr>
+        <tr>
+          <td>Democrat</td>
+          <td id="demtot"></td>
+          <td id="demvotes"></td>
+        </tr>
+        <tr>
+          <td>Independent</td>
+          <td id="itot"></td>
+          <td id="ivotes"></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td id="total"></td>
+          <td id="totalvotes"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Least Engaged (Bottom 10% Attendance)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Missed Votes</th>
+          <th>% Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Most Engaged (Top 10% Attendance)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Missed Votes</th>
+          <th>% Missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+        </tr>
+      </tbody>
     </table>
   </div>
   <footer class="card-footer text-center foot">
@@ -117,8 +228,9 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
   <!-- myscrips -->
-  <script src="./scripts/pro-congress-113-house.js"></script>
-  <script src="./scripts/main.js"></script>
+
+  <script src="scripts/pro-congress-113-house.js"></script>
+  <script src="scripts/main_house_atendance.js"></script>
 </body>
 
 </html>
