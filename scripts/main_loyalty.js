@@ -14,14 +14,14 @@ let statistics = {
 let per = Math.round(members.length / 10); //We'll use it as a index
 
 let m_ordenvotes = members;
-
+let ceros = 0;
 calcstats();
 
 printtable();
 
-m_ordenvotes.sort(function(a, b) { return (b.votes_with_party_pct - a.votes_with_party_pct) });
+m_ordenvotes.sort(function (a, b) { return (b.votes_with_party_pct - a.votes_with_party_pct) });
 leastmostloyal(m_ordenvotes, "tbody_most_party");
-m_ordenvotes.sort(function(a, b) { return (a.votes_with_party_pct - b.votes_with_party_pct) });
+m_ordenvotes.sort(function (a, b) { return (a.votes_with_party_pct - b.votes_with_party_pct) });
 leastmostloyal(m_ordenvotes, "tbody_least_party");
 
 function calcstats() {
@@ -42,16 +42,19 @@ function calcstats() {
 
     if (statistics.num_rep == 0) {
         statistics.totalAvgR = 0
+        ceros++;
     } else {
         statistics.totalAvgR = statistics.rep_votes / statistics.num_rep;
     }
     if (statistics.num_dem == 0) {
         statistics.totalAvgD = 0
+        ceros++;
     } else {
         statistics.totalAvgD = statistics.dem_votes / statistics.num_dem;
     }
     if (statistics.num_ind == 0) {
         statistics.totalAvgI = 0
+        ceros++;
     } else {
         statistics.totalAvgI = statistics.ind_votes / statistics.num_ind
     }
@@ -75,10 +78,8 @@ function printtable() {
     );
     document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2);
     document.getElementById("totalvotes").innerHTML =
-        (statistics.totalAvgD.toFixed(2) +
-            statistics.totalAvgR.toFixed(2) +
-            statistics.totalAvgI.toFixed(2)) /
-        3;
+        ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) /
+            (3 - ceros)).toFixed(2);
 }
 
 function leastmostloyal(m_ordenvotes, idhtml) {

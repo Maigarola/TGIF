@@ -14,14 +14,14 @@ let statistics = {
 let per = Math.round(members.length / 10); //We'll use it as a index
 
 let m_ordenvotes = members;
-
+let ceros = 0;
 calcstats();
 
 printtable();
 
-m_ordenvotes.sort(function(a, b) { return (b.missed_votes_pct - a.missed_votes_pct) });
+m_ordenvotes.sort(function (a, b) { return (b.missed_votes_pct - a.missed_votes_pct) });
 leastmostengaged(m_ordenvotes, "tbody_least");
-m_ordenvotes.sort(function(a, b) { return (a.missed_votes_pct - b.missed_votes_pct) });
+m_ordenvotes.sort(function (a, b) { return (a.missed_votes_pct - b.missed_votes_pct) });
 leastmostengaged(m_ordenvotes, "tbody_most");
 
 function calcstats() {
@@ -42,18 +42,21 @@ function calcstats() {
 
     if (statistics.num_rep == 0) {
         statistics.totalAvgR = 0
+        ceros++;
     } else {
         statistics.totalAvgR = statistics.rep_votes / statistics.num_rep;
     }
     if (statistics.num_dem == 0) {
         statistics.totalAvgD = 0
+        ceros++;
     } else {
         statistics.totalAvgD = statistics.dem_votes / statistics.num_dem;
     }
     if (statistics.num_ind == 0) {
         statistics.totalAvgI = 0
+        ceros++;
     } else {
-        statistics.totalAvgI = statistics.ind_votes / statistics.num_ind
+        statistics.totalAvgI = statistics.ind_votes / statistics.num_ind;
     }
 
 
@@ -75,10 +78,8 @@ function printtable() {
     );
     document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2);
     document.getElementById("totalvotes").innerHTML =
-        (statistics.totalAvgD.toFixed(2) +
-            statistics.totalAvgR.toFixed(2) +
-            statistics.totalAvgI.toFixed(2)) /
-        3;
+        ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) /
+            (3 - ceros)).toFixed(2);
 }
 
 function leastmostengaged(m_ordenvotes, idhtml) {
@@ -111,34 +112,3 @@ function leastmostengaged(m_ordenvotes, idhtml) {
     }
     tablebody.innerHTML = template;
 }
-
-// function leastmostloyal(m_ordenvotes, idhtml) {
-
-//     let tablebody = document.getElementById(idhtml);
-//     let template = " ";
-//     let perdup = per;
-//     for (let i = 0; i < per; i++) {
-
-//         template += `
-//       <tr>
-//       <td> <a href="${m_ordenvotes[i].url}">${m_ordenvotes[i].first_name} ${(m_ordenvotes[i].second_name || "")} ${m_ordenvotes[i].last_name} </a></td>
-//       <td> ${m_ordenvotes[i].total_votes}<t/td>
-//         <td> ${m_ordenvotes[i].votes_with_party_pct}</td>
-
-//         </tr >
-//     `;
-
-//     }
-//     while (m_ordenvotes[perdup - 1].votes_with_party_pct == m_ordenvotes[perdup].votes_with_party_pct) {
-//         template += `
-//     <tr>
-//       <td> <a href="${m_ordenvotes[perdup].url}">${m_ordenvotes[perdup].first_name} ${(m_ordenvotes[perdup].second_name || "")} ${m_ordenvotes[perdup].last_name} </a></td>
-//       <td> ${m_ordenvotes[i].total_votes}<t/td>
-//       <td> ${m_ordenvotes[i].votes_with_party_pct}</td>
-
-//       </tr >
-//   `;
-//         perdup++;
-//     }
-//     tablebody.innerHTML = template;
-// }
