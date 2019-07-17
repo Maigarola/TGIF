@@ -18,14 +18,12 @@ dropdownmenu(members);
 document.getElementById("R_checked").addEventListener("click", () => filter(members, "R"));
 document.getElementById("D_checked").addEventListener("click", () => filter(members, "D"));
 document.getElementById("I_checked").addEventListener("click", () => filter(members, "I"));
-document.getElementById("State").addEventListener("change", () => filter(members, "All"));
 
 function filter(lista, a) {
 
     D_checked = document.getElementById("D_checked").checked;
     R_checked = document.getElementById("R_checked").checked;
     I_checked = document.getElementById("I_checked").checked;
-    S_selected = document.getElementById("State").onselect;
 
     let whochecked = [];
 
@@ -39,11 +37,6 @@ function filter(lista, a) {
     if (I_checked) {
         whochecked.push("I");
     }
-    if (S_selected != ""){
-        whochecked.push(S_selected);
-    }
-
-    console.log(whochecked);
 
     m_filtrada = [];
 
@@ -92,14 +85,14 @@ function dropdownmenu(lista) {
 
     norepes.sort();
 
-    let template = `<option value = ${"-- All States --"}></option>"`;
-
+    let template = `<option value = "AllStates">-- All States --</option>`
+    ;
     for (let i = 0; i < norepes.length; i++) {
         template += `
-       <option value = ${norepes[i]}></option>
-       `;
-        newoption.innerHTML = template;
+        <option value = "${norepes[i]}">${norepes[i]}</option>
+        `;
     }
-}
+    newoption.innerHTML = template;
 
+}
 
