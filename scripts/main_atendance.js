@@ -58,8 +58,6 @@ function calcstats() {
     } else {
         statistics.totalAvgI = statistics.ind_votes / statistics.num_ind;
     }
-
-
 }
 
 function printtable() {
@@ -70,16 +68,10 @@ function printtable() {
     document.getElementById("total").innerHTML =
         statistics.num_rep + statistics.num_dem + statistics.num_ind;
 
-    document.getElementById("demvotes").innerHTML = statistics.totalAvgD.toFixed(
-        2
-    );
-    document.getElementById("repvotes").innerHTML = statistics.totalAvgR.toFixed(
-        2
-    );
+    document.getElementById("demvotes").innerHTML = statistics.totalAvgD.toFixed(2);
+    document.getElementById("repvotes").innerHTML = statistics.totalAvgR.toFixed(2);
     document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2);
-    document.getElementById("totalvotes").innerHTML =
-        ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) /
-            (3 - ceros)).toFixed(2);
+    document.getElementById("totalvotes").innerHTML = ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) / (3 - ceros)).toFixed(2);
 }
 
 function leastmostengaged(m_ordenvotes, idhtml) {
@@ -88,14 +80,12 @@ function leastmostengaged(m_ordenvotes, idhtml) {
     let template = " ";
     let perdup = per;
     for (let i = 0; i < per; i++) {
-
         template += `
       <tr>
       <td> <a href="${m_ordenvotes[i].url}">${m_ordenvotes[i].first_name} ${(m_ordenvotes[i].second_name || "")} ${m_ordenvotes[i].last_name} </a></td>
       <td> ${m_ordenvotes[i].missed_votes}</td>
         <td> ${m_ordenvotes[i].missed_votes_pct}</td>
-
-        </tr >
+      </tr>
     `;
 
     }
