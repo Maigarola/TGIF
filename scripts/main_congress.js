@@ -13,11 +13,57 @@ filter(members, "D");
 filter(members, "R");
 filter(members, "I");
 
+
 dropdownmenu(members);
 
 document.getElementById("R_checked").addEventListener("click", () => filter(members, "R"));
 document.getElementById("D_checked").addEventListener("click", () => filter(members, "D"));
 document.getElementById("I_checked").addEventListener("click", () => filter(members, "I"));
+document.getElementById("State").addEventListener("change", () => filterS(members));
+
+
+function filterS(lista) {
+
+    let thestate = document.getElementById("State").value;
+
+    console.log(thestate);
+
+    let template = " ";
+
+    if (thestate == "AllStates") {
+        for (let i = 0; i < lista.length; i++) {
+            template += `
+                  <tr>
+                  <td> <a href="${lista[i].url}">${lista[i].first_name} ${(lista[i].middle_name || "")} ${lista[i].last_name} </a></td>
+                  <td> ${lista[i].party}</td>
+                  <td> ${lista[i].state}</td>
+                  <td> ${lista[i].seniority}</td>
+                  <td> ${lista[i].votes_with_party_pct}</td>
+                  </tr>
+                   `;
+            table_body.innerHTML = template;
+
+        }
+    }
+    else {
+        for (let i = 0; i < lista.length; i++) {
+            if (lista[i].state == thestate) {
+                template += `
+              <tr>
+              <td> <a href="${lista[i].url}">${lista[i].first_name} ${(lista[i].middle_name || "")} ${lista[i].last_name} </a></td>
+              <td> ${lista[i].party}</td>
+              <td> ${lista[i].state}</td>
+              <td> ${lista[i].seniority}</td>
+              <td> ${lista[i].votes_with_party_pct}</td>
+              </tr>
+               `;
+                table_body.innerHTML = template;
+            }
+        }
+    }
+
+
+}
 
 function filter(lista, a) {
 
@@ -86,7 +132,7 @@ function dropdownmenu(lista) {
     norepes.sort();
 
     let template = `<option value = "AllStates">-- All States --</option>`
-    ;
+        ;
     for (let i = 0; i < norepes.length; i++) {
         template += `
         <option value = "${norepes[i]}">${norepes[i]}</option>
