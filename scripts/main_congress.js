@@ -6,90 +6,43 @@ let members = data.results[0].members;
 
 let table_body = document.getElementById("table-body");
 
-// tabletable(members);
-
 //FILTROS
-filter(members, "D");
-filter(members, "R");
-filter(members, "I");
-
 
 dropdownmenu(members);
-
-document.getElementById("R_checked").addEventListener("click", () => filter(members, "R"));
-document.getElementById("D_checked").addEventListener("click", () => filter(members, "D"));
-document.getElementById("I_checked").addEventListener("click", () => filter(members, "I"));
-document.getElementById("State").addEventListener("change", () => filterS(members));
+filter(members);
 
 
-function filterS(lista) {
+document.getElementById("R_checked").addEventListener("click", () => filter(members));
+document.getElementById("D_checked").addEventListener("click", () => filter(members));
+document.getElementById("I_checked").addEventListener("click", () => filter(members));
+document.getElementById("State").addEventListener("change", () => filter(members));
+
+
+function filter(lista) {
 
     let thestate = document.getElementById("State").value;
+    let D_checked = document.getElementById("D_checked").checked;
+    let R_checked = document.getElementById("R_checked").checked;
+    let I_checked = document.getElementById("I_checked").checked;
 
-    console.log(thestate);
-
-    let template = " ";
-
-    if (thestate == "AllStates") {
-        for (let i = 0; i < lista.length; i++) {
-            template += `
-                  <tr>
-                  <td> <a href="${lista[i].url}">${lista[i].first_name} ${(lista[i].middle_name || "")} ${lista[i].last_name} </a></td>
-                  <td> ${lista[i].party}</td>
-                  <td> ${lista[i].state}</td>
-                  <td> ${lista[i].seniority}</td>
-                  <td> ${lista[i].votes_with_party_pct}</td>
-                  </tr>
-                   `;
-            table_body.innerHTML = template;
-
-        }
-    }
-    else {
-        for (let i = 0; i < lista.length; i++) {
-            if (lista[i].state == thestate) {
-                template += `
-              <tr>
-              <td> <a href="${lista[i].url}">${lista[i].first_name} ${(lista[i].middle_name || "")} ${lista[i].last_name} </a></td>
-              <td> ${lista[i].party}</td>
-              <td> ${lista[i].state}</td>
-              <td> ${lista[i].seniority}</td>
-              <td> ${lista[i].votes_with_party_pct}</td>
-              </tr>
-               `;
-                table_body.innerHTML = template;
-            }
-        }
-    }
-
-
-}
-
-function filter(lista, a) {
-
-    D_checked = document.getElementById("D_checked").checked;
-    R_checked = document.getElementById("R_checked").checked;
-    I_checked = document.getElementById("I_checked").checked;
-
-    let whochecked = [];
-
-    if (D_checked) {
-        whochecked.push("D");
-    }
-    if (R_checked) {
-        whochecked.push("R");
-    }
-
-    if (I_checked) {
-        whochecked.push("I");
-    }
-
-    m_filtrada = [];
+    let m_filtrada = [];
+    let added = false;
 
     for (let i = 0; i < lista.length; i++) {
-        if (whochecked.includes(lista[i].party)) {
+
+        if ((added == false) && (D_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "D")) {
             m_filtrada.push(lista[i]);
+            added = true;
         }
+        if ((added == false) && (R_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "R")) {
+            m_filtrada.push(lista[i]);
+            added = true;
+        }
+        if ((added == false) && (I_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "I")) {
+            m_filtrada.push(lista[i]);
+            added = true;
+        }
+        added = false;
     }
     if (m_filtrada.length == 0) {
 
@@ -97,8 +50,8 @@ function filter(lista, a) {
     }
 
     else { tabletable(m_filtrada) }
-
 }
+
 
 function tabletable(lista) {
 
