@@ -33,6 +33,8 @@ fetch(url, {
 
     dropdownmenu(members);
     filter(members);
+    $('#loader').addClass("hide-loader");
+
 
     document.getElementById("R_checked").addEventListener("click", () => filter(members));
     document.getElementById("D_checked").addEventListener("click", () => filter(members));

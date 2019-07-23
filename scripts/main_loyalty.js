@@ -41,6 +41,8 @@ fetch(url, {
 
     calcstats();
     printtable();
+    $('#loader').addClass("hide-loader");
+
 
     m_ordenvotes.sort(function (a, b) { return (b.votes_with_party_pct - a.votes_with_party_pct) });
     leastmostloyal(m_ordenvotes, "tbody_most_party");

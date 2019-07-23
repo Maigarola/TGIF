@@ -38,15 +38,18 @@ fetch(url, {
 
     let m_ordenvotes = members;
     let ceros = 0;
-
     calcstats();
+
     printtable();
+    $('#loader').addClass("hide-loader");
+
+
 
     m_ordenvotes.sort(function (a, b) { return (b.missed_votes_pct - a.missed_votes_pct) });
     leastmostengaged(m_ordenvotes, "tbody_least");
     m_ordenvotes.sort(function (a, b) { return (a.missed_votes_pct - b.missed_votes_pct) });
     leastmostengaged(m_ordenvotes, "tbody_most");
-
+    
     function calcstats() {
         members.forEach(member => {
             if (member.party == "R") {
