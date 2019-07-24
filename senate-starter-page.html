@@ -94,11 +94,11 @@
         <div class="myitems cbx row">
             <div class="container col-6">
                 <p>Filter by party:</p>
-                <input type="checkbox" id="R_checked" checked>
+                <input type="checkbox" id="R_checked">
                 <label for="Republican">Republican</label>
-                <input type="checkbox" id="D_checked" checked>
+                <input type="checkbox" id="D_checked">
                 <label for="Democrat">Democrat</label>
-                <input type="checkbox" id="I_checked" checked>
+                <input type="checkbox" id="I_checked">
                 <label for="Independent">Independent</label>
             </div>
             <div class="container col-6">
@@ -122,7 +122,9 @@
             <tbody id=table-body>
             </tbody>
         </table>
-        <div id="loader" class="loader col-6"></div>
+        <div class="preloader">
+            <div id="loader" class="loader"></div>
+        </div>
     </div>
     <footer class="card-footer text-center foot">
         <p> © 2019 TGIF | All Rights Reserved </p>

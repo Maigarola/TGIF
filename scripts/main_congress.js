@@ -33,7 +33,6 @@ fetch(url, {
 
     dropdownmenu(members);
     filter(members);
-    $('#loader').addClass("hide-loader");
 
 
     document.getElementById("R_checked").addEventListener("click", () => filter(members));
@@ -51,15 +50,21 @@ fetch(url, {
         let m_filtrada = [];
 
         for (let i = 0; i < lista.length; i++) {
+            if ((!D_checked && !R_checked && !I_checked) && ((lista[i].state == thestate) || thestate == "AllStates")) {
+                m_filtrada.push(lista[i]);
+            }
 
-            if ((D_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "D")) {
-                m_filtrada.push(lista[i]);
-            }
-            if ((R_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "R")) {
-                m_filtrada.push(lista[i]);
-            }
-            if ((I_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "I")) {
-                m_filtrada.push(lista[i]);
+            else {
+
+                if ((D_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "D")) {
+                    m_filtrada.push(lista[i]);
+                }
+                if ((R_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "R")) {
+                    m_filtrada.push(lista[i]);
+                }
+                if ((I_checked) && ((thestate == "AllStates") || (lista[i].state == thestate)) && (lista[i].party == "I")) {
+                    m_filtrada.push(lista[i]);
+                }
             }
         }
         if (m_filtrada.length == 0) {
@@ -68,6 +73,8 @@ fetch(url, {
         }
 
         else { tabletable(m_filtrada) }
+        $('#loader').addClass("hide-loader");
+
     }
     function tabletable(lista) {
 
@@ -80,7 +87,7 @@ fetch(url, {
       <td> ${lista[i].party}</td>
       <td> ${lista[i].state}</td>
       <td> ${lista[i].seniority}</td>
-      <td> ${lista[i].votes_with_party_pct}</td>
+      <td> ${lista[i].votes_with_party_pct + " %"}</td>
       </tr>
        `;
             table_body.innerHTML = template;
@@ -112,3 +119,4 @@ fetch(url, {
 }).catch(function (error) {
     console.log("Request failed: " + error.message);
 });
+

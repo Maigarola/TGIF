@@ -46,6 +46,7 @@ fetch(url, {
 
     m_ordenvotes.sort(function (a, b) { return (b.votes_with_party_pct - a.votes_with_party_pct) });
     leastmostloyal(m_ordenvotes, "tbody_most_party");
+    
     m_ordenvotes.sort(function (a, b) { return (a.votes_with_party_pct - b.votes_with_party_pct) });
     leastmostloyal(m_ordenvotes, "tbody_least_party");
 
@@ -116,7 +117,7 @@ fetch(url, {
       <tr>
       <td> <a href="${m_ordenvotes[i].url}">${m_ordenvotes[i].first_name} ${(m_ordenvotes[i].second_name || "")} ${m_ordenvotes[i].last_name} </a></td>
       <td> ${m_ordenvotes[i].total_votes}</td>
-        <td> ${m_ordenvotes[i].votes_with_party_pct}</td>
+        <td> ${m_ordenvotes[i].votes_with_party_pct + " %"}</td>
 
         </tr >
     `;
@@ -127,7 +128,7 @@ fetch(url, {
     <tr>
       <td> <a href="${m_ordenvotes[perdup].url}">${m_ordenvotes[perdup].first_name} ${(m_ordenvotes[perdup].second_name || "")} ${m_ordenvotes[perdup].last_name} </a></td>
       <td> ${m_ordenvotes[i].total_votes}</td>
-      <td> ${m_ordenvotes[i].votes_with_party_pct}</td>
+      <td> ${m_ordenvotes[i].votes_with_party_pct + " %"}</td>
       </tr >
   `;
             perdup++;
