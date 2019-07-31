@@ -67,13 +67,11 @@
     <div class="row">
         <div class="myitems col-sm-6 text-justify">
             <h2>Attendance</h2>
-            <p>
-                The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
+            <p> The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
                 Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in
                 most cases, debates continue even if a majority
                 is not present.
             </p>
-
             <p>
                 The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating
                 "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal
@@ -83,7 +81,7 @@
             </p>
         </div>
 
-        <div class="myitems col-sm-6 text-justify">
+        <div class="myitems col-sm-6 text-center">
             <h2>House at a glance</h2>
             <table class="table">
                 <thead>
@@ -117,41 +115,37 @@
                 </tbody>
             </table>
         </div>
+            <div class="myitems col-sm-6">
+                <h2>Least Engaged (Bottom 10% Attendance)</h2>
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Number of Missed Votes</th>
+                            <th>% Missed</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_least">
+                    </tbody>
+                </table>
+                <div id="loader1" class="loader"></div>
+            </div>
+            <div class="myitems col-sm-6">
+                <h2>Most Engaged (Top 10% Attendance)</h2>
+                <table class="table table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Number of Missed Votes</th>
+                            <th>% Missed</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_most">
 
-        <div class="table myitems col-sm-6">
-            <h2>Least Engaged (Bottom 10% Attendance)</h2>
-            <table>
-                <thead class="thead-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Number of Missed Votes</th>
-                        <th>% Missed</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody_least">
-
-                </tbody>
-            </table>
-            <div id="loader1" class="loader"></div>
-
-        </div>
-        <div class="table myitems col-sm-6">
-            <h2>Most Engaged (Top 10% Attendance)</h2>
-            <table>
-                <thead class="thead-light">
-                    <tr>
-                        <th>Name</th>
-                        <th>Number of Missed Votes</th>
-                        <th>% Missed</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody_most">
-
-                </tbody>
-            </table>
-            <div id="loader2" class="loader"></div>
-
-        </div>
+                    </tbody>
+                </table>
+                <div id="loader2" class="loader"></div>
+            </div>
     </div>
     <footer class="card-footer text-center foot">
         <p>© 2019 TGIF | All Rights Reserved</p>
