@@ -41,14 +41,36 @@ fetch(url, {
 
     calcstats();
     printtable();
-    $('#loader').addClass("hide-loader");
 
 
-    m_ordenvotes.sort(function (a, b) { return (b.votes_with_party_pct - a.votes_with_party_pct) });
-    leastmostloyal(m_ordenvotes, "tbody_most_party");
-    
-    m_ordenvotes.sort(function (a, b) { return (a.votes_with_party_pct - b.votes_with_party_pct) });
-    leastmostloyal(m_ordenvotes, "tbody_least_party");
+    document.getElementById("loader1").setAttribute("class", "hide-loader");
+    document.getElementById("loader2").setAttribute("class", "hide-loader");
+
+
+
+    if (window.location.href.includes("attendance")) {
+        m_ordenvotes.sort(function (a, b) {
+            return (b.missed_votes_pct - a.missed_votes_pct)
+        });
+        leastmostengaged(m_ordenvotes, "tbody_least");
+        m_ordenvotes.sort(function (a, b) {
+            return (a.missed_votes_pct - b.missed_votes_pct)
+        });
+        leastmostengaged(m_ordenvotes, "tbody_most");
+    }
+    else if (window.location.href.includes("loyalty")) {
+
+        m_ordenvotes.sort(function (a, b) {
+            return (b.votes_with_party_pct - a.votes_with_party_pct)
+        });
+        leastmostloyal(m_ordenvotes, "tbody_most_party");
+
+        m_ordenvotes.sort(function (a, b) {
+            return (a.votes_with_party_pct - b.votes_with_party_pct)
+        });
+        leastmostloyal(m_ordenvotes, "tbody_least_party");
+    }
+
 
     function calcstats() {
         members.forEach(member => {
@@ -82,30 +104,56 @@ fetch(url, {
             statistics.totalAvgI = 0
             ceros++;
         } else {
-            statistics.totalAvgI = statistics.ind_votes / statistics.num_ind
+            statistics.totalAvgI = statistics.ind_votes / statistics.num_ind;
         }
     }
-
     function printtable() {
 
-        document.getElementById("demtot").innerHTML = statistics.num_rep;
-        document.getElementById("reptot").innerHTML = statistics.num_dem;
+        document.getElementById("demtot").innerHTML = statistics.num_dem;
+        document.getElementById("reptot").innerHTML = statistics.num_rep;
         document.getElementById("itot").innerHTML = statistics.num_ind;
         document.getElementById("total").innerHTML =
             statistics.num_rep + statistics.num_dem + statistics.num_ind;
 
         document.getElementById("demvotes").innerHTML = statistics.totalAvgD.toFixed(
             2
-        );
+        ) + "%";
         document.getElementById("repvotes").innerHTML = statistics.totalAvgR.toFixed(
             2
-        );
-        document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2);
+        ) + "%";
+        document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2) + "%";
         document.getElementById("totalvotes").innerHTML =
             ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) /
-                (3 - ceros)).toFixed(2);
+                (3 - ceros)).toFixed(2) + "%";
     }
+    function leastmostengaged(m_ordenvotes, idhtml) {
 
+        let tablebody = document.getElementById(idhtml);
+        let template = " ";
+        let perdup = per;
+        for (let i = 0; i < per; i++) {
+            template += `
+      <tr>
+      <td> <a href="${m_ordenvotes[i].url}">${m_ordenvotes[i].first_name} ${(m_ordenvotes[i].second_name || "")} ${m_ordenvotes[i].last_name} </a></td>
+      <td> ${m_ordenvotes[i].missed_votes}</td>
+        <td> ${m_ordenvotes[i].missed_votes_pct + "%"}</td>
+      </tr>
+    `;
+
+        }
+        while (m_ordenvotes[perdup - 1].missed_votes_pct == m_ordenvotes[perdup].missed_votes_pct) {
+            template += `
+    <tr>
+      <td> <a href="${m_ordenvotes[perdup].url}">${m_ordenvotes[perdup].first_name} ${(m_ordenvotes[perdup].second_name || "")} ${m_ordenvotes[perdup].last_name} </a></td>
+      <td> ${m_ordenvotes[perdup].missed_votes}</td>
+      <td> ${m_ordenvotes[perdup].missed_votes_pct + "%"}</td>
+
+      </tr >
+  `;
+            perdup++;
+        }
+        tablebody.innerHTML = template;
+    }
     function leastmostloyal(m_ordenvotes, idhtml) {
 
         let tablebody = document.getElementById(idhtml);

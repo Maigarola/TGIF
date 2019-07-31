@@ -23,6 +23,8 @@ fetch(url, {
 
 }).then(function (json) {
 
+    document.getElementById("loader1").setAttribute("class", "hide-loader");
+    
     data = json;
 
     let members = data.results[0].members;
@@ -50,6 +52,7 @@ fetch(url, {
         let m_filtrada = [];
 
         for (let i = 0; i < lista.length; i++) {
+
             if ((!D_checked && !R_checked && !I_checked) && ((lista[i].state == thestate) || thestate == "AllStates")) {
                 m_filtrada.push(lista[i]);
             }
@@ -67,13 +70,14 @@ fetch(url, {
                 }
             }
         }
+
         if (m_filtrada.length == 0) {
 
-            table_body.innerHTML = "NO CRITERIA WITH THIS FILTERS"
+            table_body.innerHTML = "SORRY, NO CRITERIA WITH THIS FILTERS"
         }
 
-        else { tabletable(m_filtrada) }
-        $('#loader').addClass("hide-loader");
+        else { tabletable(m_filtrada); }
+
 
     }
     function tabletable(lista) {
@@ -106,8 +110,8 @@ fetch(url, {
 
         norepes.sort();
 
-        let template = `<option value = "AllStates">-- All States --</option>`
-            ;
+        let template = `<option value = "AllStates">-- All States --</option>`;
+
         for (let i = 0; i < norepes.length; i++) {
             template += `
         <option value = "${norepes[i]}">${norepes[i]}</option>
@@ -119,4 +123,40 @@ fetch(url, {
 }).catch(function (error) {
     console.log("Request failed: " + error.message);
 });
+
+// METODOS DE ARRAYS
+
+// let numbers = [1,2,3,4,5];
+// let output =[];
+// members.filter(m => m.party == "R");
+// members.map(m => m.state);
+
+// function chachifilter() {
+
+//     let cb = Array.from(document.querySelectorAll("input[type=checkbox]:checked")).map(c => c.value);
+
+//     // todos los elementos de css input... checkeados
+//     //  y luego convertimos los checbox checkeados en 
+//     // su value, es decir de rep pasa a R...
+
+//     let filteredMembers = members.filter(m => {
+
+//         let partyfilter = (cb.includes(m.party) || cb.length == 0);
+//         let statefilter = (thestate == m.state || thestate == "AllStates"); //condiciones.
+
+//         return partyfilter && statefilter;
+
+// })
+
+    // guardamos en la array todos los members que su 
+    //    party esté en cb (que es los values de los checkbox)
+
+// function chachiStates(){
+//   let chachistate =  Array.from(new Set(members.map(m => m.state).sort()));
+//  // + bucle para meterlos en tabla.
+
+// }
+
+    
+
 

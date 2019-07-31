@@ -38,18 +38,20 @@ fetch(url, {
 
     let m_ordenvotes = members;
     let ceros = 0;
-    calcstats();
 
+    calcstats();
     printtable();
     $('#loader').addClass("hide-loader");
 
 
-
-    m_ordenvotes.sort(function (a, b) { return (b.missed_votes_pct - a.missed_votes_pct) });
-    leastmostengaged(m_ordenvotes, "tbody_least");
-    m_ordenvotes.sort(function (a, b) { return (a.missed_votes_pct - b.missed_votes_pct) });
-    leastmostengaged(m_ordenvotes, "tbody_most");
+    m_ordenvotes.sort(function (a, b) { 
+        return (b.votes_with_party_pct - a.votes_with_party_pct) });
+    leastmostloyal(m_ordenvotes, "tbody_most_party");
     
+    m_ordenvotes.sort(function (a, b) { 
+        return (a.votes_with_party_pct - b.votes_with_party_pct) });
+    leastmostloyal(m_ordenvotes, "tbody_least_party");
+
     function calcstats() {
         members.forEach(member => {
             if (member.party == "R") {
@@ -82,7 +84,7 @@ fetch(url, {
             statistics.totalAvgI = 0
             ceros++;
         } else {
-            statistics.totalAvgI = statistics.ind_votes / statistics.num_ind;
+            statistics.totalAvgI = statistics.ind_votes / statistics.num_ind
         }
     }
 
@@ -94,39 +96,47 @@ fetch(url, {
         document.getElementById("total").innerHTML =
             statistics.num_rep + statistics.num_dem + statistics.num_ind;
 
-        document.getElementById("demvotes").innerHTML = statistics.totalAvgD.toFixed(2);
-        document.getElementById("repvotes").innerHTML = statistics.totalAvgR.toFixed(2);
-        document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2);
-        document.getElementById("totalvotes").innerHTML = ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) / (3 - ceros)).toFixed(2);
+        document.getElementById("demvotes").innerHTML = statistics.totalAvgD.toFixed(
+            2
+        )+"%";
+        document.getElementById("repvotes").innerHTML = statistics.totalAvgR.toFixed(
+            2
+        )+ "%";
+        document.getElementById("ivotes").innerHTML = statistics.totalAvgI.toFixed(2)+ "%";
+        document.getElementById("totalvotes").innerHTML =
+            ((statistics.totalAvgD + statistics.totalAvgR + statistics.totalAvgI) /
+                (3 - ceros)).toFixed(2) + "%";
     }
 
-    function leastmostengaged(m_ordenvotes, idhtml) {
+    function leastmostloyal(m_ordenvotes, idhtml) {
 
         let tablebody = document.getElementById(idhtml);
         let template = " ";
         let perdup = per;
         for (let i = 0; i < per; i++) {
+
             template += `
       <tr>
       <td> <a href="${m_ordenvotes[i].url}">${m_ordenvotes[i].first_name} ${(m_ordenvotes[i].second_name || "")} ${m_ordenvotes[i].last_name} </a></td>
-      <td> ${m_ordenvotes[i].missed_votes}</td>
-        <td> ${m_ordenvotes[i].missed_votes_pct}</td>
-      </tr>
+      <td> ${m_ordenvotes[i].total_votes}</td>
+        <td> ${m_ordenvotes[i].votes_with_party_pct + " %"}</td>
+
+        </tr >
     `;
 
         }
-        while (m_ordenvotes[perdup - 1].missed_votes_pct == m_ordenvotes[perdup].missed_votes_pct) {
+        while (m_ordenvotes[perdup - 1].votes_with_party_pct == m_ordenvotes[perdup].votes_with_party_pct) {
             template += `
     <tr>
       <td> <a href="${m_ordenvotes[perdup].url}">${m_ordenvotes[perdup].first_name} ${(m_ordenvotes[perdup].second_name || "")} ${m_ordenvotes[perdup].last_name} </a></td>
-      <td> ${m_ordenvotes[perdup].missed_votes}</td>
-      <td> ${m_ordenvotes[perdup].missed_votes_pct}</td>
-
+      <td> ${m_ordenvotes[i].total_votes}</td>
+      <td> ${m_ordenvotes[i].votes_with_party_pct + " %"}</td>
       </tr >
   `;
             perdup++;
         }
         tablebody.innerHTML = template;
+
     }
 }).catch(function (error) {
     console.log("Request failed: " + error.message);

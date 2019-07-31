@@ -5,11 +5,9 @@
   padding: 0px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.preloader{
-  display: flex;
-}
+
 .loader {
-  align-content: center;
+  margin: 50px;
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #536f81; /* Blue */
   border-radius: 50%;
@@ -28,7 +26,7 @@
 }
 
 .hide-loader {
-  /* display: none; */
+  display: none;
 }
 
 .mylink {
